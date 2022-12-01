@@ -12,11 +12,7 @@ spec:
           - path: manifests/foundation/*/*
   template:
     metadata:
-      name: '{{path[2]}}-{{name}}'  # service-cluster. owner is not included because names longer than 64 chars are not allowed
-      labels:
-        owner: '{{path[1]}}'
-        app: '{{path[2]}}'  # service name
-        cluster: '{{name}}'
+      name: '{{path.basenameNormalized}}'  # service name. owner is not included because names longer than 64 chars are not allowed
       annotations:
         argocd.argoproj.io/sync-wave: "-100"
         # https://argo-cd.readthedocs.io/en/latest/operator-manual/high_availability/#webhook-and-manifest-paths-annotation
@@ -31,8 +27,8 @@ spec:
         targetRevision: HEAD
         path: '{{path}}'
       destination:
-        server: '{{server}}'
-        namespace: '{{path[2]}}' # Same as service name. If they are different then it must be manually created.
+        server: https://kubernetes.default.svc
+        namespace: '{{path.basenameNormalized}}' # Same as service name. If they are different then it must be manually created.
       # Sync policy
       syncPolicy:
         automated: # automated sync by default retries failed attempts 5 times with following delays between attempts ( 5s, 10s, 20s, 40s, 80s ); retry controlled using `retry` field.
