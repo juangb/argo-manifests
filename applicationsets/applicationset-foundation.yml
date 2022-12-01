@@ -3,6 +3,8 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: cluster-git-ktes-foundation
+  annotations:
+        argocd.argoproj.io/sync-wave: "-5"
 spec:
   generators:
     - git:
@@ -14,7 +16,6 @@ spec:
     metadata:
       name: '{{path.basenameNormalized}}'  # service name. owner is not included because names longer than 64 chars are not allowed
       annotations:
-        argocd.argoproj.io/sync-wave: "-100"
         # https://argo-cd.readthedocs.io/en/latest/operator-manual/high_availability/#webhook-and-manifest-paths-annotation
         # A new commit to the Git repository invalidates cache for all applications 
         # configured in the repository that again negatively affect mono repositories 
