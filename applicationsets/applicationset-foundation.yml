@@ -7,10 +7,10 @@ spec:
   generators:
     # matrix 'parent' generator
     - git:
-      repoURL: https://github.com/juangb/argo-manifests.git
-      revision: HEAD
-      directories:
-      - path: manifests/foundation/*/*
+        repoURL: https://github.com/juangb/argo-manifests.git
+        revision: HEAD
+        directories:
+        - path: manifests/foundation/*/*
   template:
     metadata:
       name: '{{path[2]}}-{{name}}'  # service-cluster. owner is not included because names longer than 64 chars are not allowed
