@@ -6,19 +6,11 @@ metadata:
 spec:
   generators:
     # matrix 'parent' generator
-    - matrix:
-        generators:
-          # git generator, 'child' #1
-          - git:
-              repoURL: https://github.com/juangb/argo-manifests.git
-              revision: HEAD
-              directories:
-                - path: manifests/foundation/*/*
-          # cluster generator, 'child' #2
-          - clusters: {} # Automatically use all clusters defined within Argo CD
-              # selector:
-              #  matchLabels:
-              #    argocd.argoproj.io/secret-type: cluster
+    - git:
+      repoURL: https://github.com/juangb/argo-manifests.git
+      revision: HEAD
+      directories:
+      - path: manifests/foundation/*/*
   template:
     metadata:
       name: '{{path[2]}}-{{name}}'  # service-cluster. owner is not included because names longer than 64 chars are not allowed
