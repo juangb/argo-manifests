@@ -9,7 +9,7 @@ spec:
         repoURL: https://github.com/juangb/argo-manifests.git
         revision: HEAD
         directories:
-          - path: services/*/*
+          - path: manifests/services/*/*
 
   template:
     metadata:
