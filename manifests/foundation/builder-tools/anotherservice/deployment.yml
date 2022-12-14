@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: another-nginx-deployment
-  namespace: nonexistent
+  namespace: anotherservice
   labels:
     app: nginx
 spec:
