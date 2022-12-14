@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: another-nginx-deployment
+  namespace: nonexistent
   labels:
     app: nginx
 spec:
@@ -16,6 +17,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx-imagepullbackoff:1.14.2
+        image: nginx:1.14.2
         ports:
         - containerPort: 80
