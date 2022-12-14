@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx-imagepullbackoff:1.14.2
+        image: nginx-imagepull:1.14.2
         ports:
         - containerPort: 80
