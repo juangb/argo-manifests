@@ -21,6 +21,7 @@ spec:
         # configured in the repository that again negatively affect mono repositories 
         # with multiple applications. This annotation solves that problem.
         argocd.argoproj.io/manifest-generate-paths: .
+        argocd.argoproj.io/sync-wave: "-4"
     spec:
       project: default # TODO Use projects for further customization
       source:
